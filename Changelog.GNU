@@ -1,4 +1,4 @@
-2017-06-18  Kenneth Loafman  <kenneth@loafman.com>
+2017-07-11  Kenneth Loafman  <kenneth@loafman.com>
 
     * Merged in lp:~dawgfoto/duplicity/skip_sync_collection_status
       - collection-status should not sync metadata
