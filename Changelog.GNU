@@ -1,5 +1,13 @@
 2017-06-18  Kenneth Loafman  <kenneth@loafman.com>
 
+    * Merged in lp:~dawgfoto/duplicity/skip_sync_collection_status
+      - collection-status should not sync metadata
+      - up-to-date local metadata is not needed as collection-status is
+        generated from remote file list
+      - syncing metadata might require to download several GBs
+
+2017-06-18  Kenneth Loafman  <kenneth@loafman.com>
+
     * Fixed problem in dist/makedist when building on Mac where AppleDouble
       files were being created in the tarball.  See:
       https://superuser.com/questions/61185/why-do-i-get-files-like-foo-in-my-tarball-on-os-x
