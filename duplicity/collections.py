@@ -46,7 +46,7 @@ class BackupSet:
     """
     Backup set - the backup information produced by one session
     """
-    def __init__(self, backend):
+    def __init__(self, backend, action):
         """
         Initialize new backup set, only backend is required at first
         """
@@ -61,6 +61,7 @@ class BackupSet:
         self.partial = False  # true if a partial backup
         self.encrypted = False  # true if an encrypted backup
         self.files_changed = []
+        self.action = action
 
     def is_complete(self):
         """
@@ -136,7 +137,11 @@ class BackupSet:
                                                remote_filename)
         self.remote_manifest_name = remote_filename
 
-        for local_filename in globals.archive_dir.listdir():
+        if self.action not in ["collection-status"]:
+            local_filename_list = globals.archive_dir.listdir()
+        else:
+            local_filename_list = []
+        for local_filename in local_filename_list:
             pr = file_naming.parse(local_filename)
             if (pr and pr.manifest and pr.type == self.type and
                     pr.time == self.time and
@@ -159,7 +164,11 @@ class BackupSet:
         except Exception:
             log.Debug(_("BackupSet.delete: missing %s") % [util.ufn(f) for f in rfn])
             pass
-        for lfn in globals.archive_dir.listdir():
+        if self.action not in ["collection-status"]:
+            local_filename_list = globals.archive_dir.listdir()
+        else:
+            local_filename_list = []
+        for lfn in local_filename_list:
             pr = file_naming.parse(lfn)
             if (pr and pr.time == self.time and
                     pr.start_time == self.start_time and
@@ -582,12 +591,13 @@ class CollectionsStatus:
     """
     Hold information about available chains and sets
     """
-    def __init__(self, backend, archive_dir):
+    def __init__(self, backend, archive_dir, action):
         """
         Make new object.  Does not set values
         """
         self.backend = backend
         self.archive_dir = archive_dir
+        self.action = action
 
         # Will hold (signature chain, backup chain) pair of active
         # (most recent) chains
@@ -691,7 +701,10 @@ class CollectionsStatus:
                   len(backend_filename_list))
 
         # get local filename list
-        local_filename_list = self.archive_dir.listdir()
+        if self.action not in ["collection-status"]:
+            local_filename_list = self.archive_dir.listdir()
+        else:
+            local_filename_list = []
         log.Debug(ngettext("%d file exists in cache",
                            "%d files exist in cache",
                            len(local_filename_list)) %
@@ -826,7 +839,7 @@ class CollectionsStatus:
                     break
             else:
                 log.Debug(_("File %s is not part of a known set; creating new set") % (util.ufn(filename),))
-                new_set = BackupSet(self.backend)
+                new_set = BackupSet(self.backend, self.action)
                 if new_set.add_filename(filename):
                     sets.append(new_set)
                 else:
@@ -888,7 +901,10 @@ class CollectionsStatus:
             if filelist is not None:
                 return filelist
             elif local:
-                return self.archive_dir.listdir()
+                if self.action not in ["collection-status"]:
+                    return self.archive_dir.listdir()
+                else:
+                    return []
             else:
                 return self.backend.list()
 
