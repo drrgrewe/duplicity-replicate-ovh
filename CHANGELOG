@@ -12,6 +12,8 @@ New in v0.7.14 (2017/07/??)
 * Patched in lp:~mterry/duplicity/giobackend-display-name
   - giobackend: handle a wider variety of gio backends by making less assumptions;
     in particular, this fixes the google-drive: backend
+* Fixed bug #1709047 with suggestion from Gary Hasson
+  * fixed so default was to use original filename
 
 
 New in v0.7.13.1 (2017/06/18)
