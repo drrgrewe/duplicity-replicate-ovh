@@ -5,6 +5,8 @@
         which has been deprecated
       - fixed copyright and PEP8 issues
       - replaced subprocess.call() with self.subprocess_popen() to standardize
+    # Fixed bug #1713640 with patch from Aleksandar Ivanisevic
+      - replace 2.7 syntax with 2.6 equivalent
 
 2017-08-28  Kenneth Loafman  <kenneth@loafman.com>
 

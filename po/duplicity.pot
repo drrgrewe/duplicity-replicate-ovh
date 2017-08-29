@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Kenneth Loafman <kenneth@loafman.com>\n"
-"POT-Creation-Date: 2017-08-06 16:07-0500\n"
+"POT-Creation-Date: 2017-08-29 10:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -357,21 +357,21 @@ msgid ""
 "encryption passphrase."
 msgstr ""
 
-#: ../bin/duplicity:1567
+#: ../bin/duplicity:1568
 msgid "INT intercepted...exiting."
 msgstr ""
 
-#: ../bin/duplicity:1575
+#: ../bin/duplicity:1576
 #, python-format
 msgid "GPG error detail: %s"
 msgstr ""
 
-#: ../bin/duplicity:1585
+#: ../bin/duplicity:1586
 #, python-format
 msgid "User error detail: %s"
 msgstr ""
 
-#: ../bin/duplicity:1595
+#: ../bin/duplicity:1596
 #, python-format
 msgid "Backend error detail: %s"
 msgstr ""

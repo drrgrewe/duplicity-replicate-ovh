@@ -222,11 +222,9 @@ class B2Backend(duplicity.backend.Backend):
         if bucket_name not in bucket_names:
             self.create_bucket(bucket_name)
         else:
-            self.bucket_id = {
-                x[
-                    'bucketName'
-                ]: x['bucketId'] for x in resp['buckets']
-            }[bucket_name]
+            for x in resp['buckets']:
+                if x['bucketName'] == self.bucket_name:
+                    self.bucket_id = x['bucketId']
 
     def create_bucket(self, bucket_name):
         """

@@ -28,6 +28,8 @@ New in v0.7.14 (2017/07/??)
     which has been deprecated
   - fixed copyright and PEP8 issues
   - replaced subprocess.call() with self.subprocess_popen() to standardize
+# Fixed bug #1713640 with patch from Aleksandar Ivanisevic
+  - replace 2.7 syntax with 2.6 equivalent
 
 
 New in v0.7.13.1 (2017/06/18)
