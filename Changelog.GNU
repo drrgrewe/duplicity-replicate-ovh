@@ -10,6 +10,7 @@
         possible after this error occurs.
     * Fixed bug #1638033 Remove leading slash on --file-to-restore
       - code already used rstrip('/') so change to just strip('/')
+    * Prep for 0.7.14
 
 2017-08-29  Kenneth Loafman  <kenneth@loafman.com>
 
