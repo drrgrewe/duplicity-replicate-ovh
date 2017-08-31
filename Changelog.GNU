@@ -1,11 +1,22 @@
+2017-08-31  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #1538333 Assertion error in manifest.py: assert filecount == ...
+      - Made sure to never pass .part files as true manifest files
+      - Changed assert to log.Error to warn about truncated/corrupt filelist
+      - Added unit test to make sure detection works
+      - Note: while this condition is serious, it will not affect the basic backup and restore
+        functions.  Interactive options like --list-files-changed and --file-changed will not
+        work correctly for this backup set, so it is advised to run a full backup as soon as
+        possible after this error occurs.
+
 2017-08-29  Kenneth Loafman  <kenneth@loafman.com>
 
-    # Fixed bug #1394386 with new module megabackend.py from Tomas Vondra
+    * Fixed bug #1394386 with new module megabackend.py from Tomas Vondra
       - uses megatools from https://megatools.megous.com/ instead of mega.py library
         which has been deprecated
       - fixed copyright and PEP8 issues
       - replaced subprocess.call() with self.subprocess_popen() to standardize
-    # Fixed bug #1713640 with patch from Aleksandar Ivanisevic
+    * Fixed bug #1713640 with patch from Aleksandar Ivanisevic
       - replace 2.7 syntax with 2.6 equivalent
 
 2017-08-28  Kenneth Loafman  <kenneth@loafman.com>

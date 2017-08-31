@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Kenneth Loafman <kenneth@loafman.com>\n"
-"POT-Creation-Date: 2017-08-29 10:45-0500\n"
+"POT-Creation-Date: 2017-08-30 15:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1489,49 +1489,55 @@ msgid ""
 "seeing this message"
 msgstr ""
 
-#: ../duplicity/manifest.py:219
+#: ../duplicity/manifest.py:210
+#, python-format
+msgid ""
+"Manifest file '%s' is corrupt: File count says %d, File list contains %d"
+msgstr ""
+
+#: ../duplicity/manifest.py:223
 #, python-format
 msgid "Found manifest volume %s"
 msgstr ""
 
-#: ../duplicity/manifest.py:226
+#: ../duplicity/manifest.py:230
 #, python-format
 msgid "Found %s volumes in manifest"
 msgstr ""
 
-#: ../duplicity/manifest.py:242
+#: ../duplicity/manifest.py:246
 msgid "Manifests not equal because different volume numbers"
 msgstr ""
 
-#: ../duplicity/manifest.py:247
+#: ../duplicity/manifest.py:251
 msgid "Manifests not equal because volume lists differ"
 msgstr ""
 
-#: ../duplicity/manifest.py:252
+#: ../duplicity/manifest.py:256
 msgid "Manifests not equal because hosts or directories differ"
 msgstr ""
 
-#: ../duplicity/manifest.py:399
+#: ../duplicity/manifest.py:403
 msgid "Warning, found extra Volume identifier"
 msgstr ""
 
-#: ../duplicity/manifest.py:425
+#: ../duplicity/manifest.py:429
 msgid "Other is not VolumeInfo"
 msgstr ""
 
-#: ../duplicity/manifest.py:428
+#: ../duplicity/manifest.py:432
 msgid "Volume numbers don't match"
 msgstr ""
 
-#: ../duplicity/manifest.py:431
+#: ../duplicity/manifest.py:435
 msgid "start_indicies don't match"
 msgstr ""
 
-#: ../duplicity/manifest.py:434
+#: ../duplicity/manifest.py:438
 msgid "end_index don't match"
 msgstr ""
 
-#: ../duplicity/manifest.py:441
+#: ../duplicity/manifest.py:445
 msgid "Hashes don't match"
 msgstr ""
 
