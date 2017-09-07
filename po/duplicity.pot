@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: Kenneth Loafman <kenneth@loafman.com>\n"
-"POT-Creation-Date: 2017-09-05 09:30-0500\n"
+"POT-Creation-Date: 2017-09-07 07:24-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -851,17 +851,17 @@ msgstr ""
 msgid "Attempt %s failed. %s: %s"
 msgstr ""
 
-#: ../duplicity/backend.py:480
+#: ../duplicity/backend.py:482
 #, python-format
 msgid "Reading results of '%s'"
 msgstr ""
 
-#: ../duplicity/backend.py:507
+#: ../duplicity/backend.py:509
 #, python-format
 msgid "Writing %s"
 msgstr ""
 
-#: ../duplicity/backend.py:548
+#: ../duplicity/backend.py:550
 #, python-format
 msgid "File %s not found locally after get from backend"
 msgstr ""
@@ -1624,7 +1624,7 @@ msgstr ""
 msgid "GPG process %d terminated before wait()"
 msgstr ""
 
-#: ../duplicity/dup_time.py:52
+#: ../duplicity/dup_time.py:61
 #, python-format
 msgid ""
 "Bad interval string \"%s\"\n"
@@ -1634,7 +1634,7 @@ msgid ""
 "page for more information."
 msgstr ""
 
-#: ../duplicity/dup_time.py:58
+#: ../duplicity/dup_time.py:67
 #, python-format
 msgid ""
 "Bad time string \"%s\"\n"
