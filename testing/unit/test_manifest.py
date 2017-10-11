@@ -93,6 +93,7 @@ class ManifestTest(UnitTestCase):
 
         self.set_global('local_path', path.Path("Foobar"))
         m.set_dirinfo()
+        m.set_files_changed_info([])
 
         s = m.to_string()
         assert s.lower().startswith("hostname")

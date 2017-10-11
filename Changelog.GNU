@@ -1,9 +1,3 @@
-2017-10-11  Kenneth Loafman  <kenneth@loafman.com>
-
-    * Removed ability to get single file status from collection-status
-      - Was eating too much memory on large changsets causing memory issues
-      - Will need to be reimplemented in a memory friendly method
-
 2017-09-22  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fixed bug #1714663 "Volume signed by XXXXXXXXXXXXXXXX, not XXXXXXXX"

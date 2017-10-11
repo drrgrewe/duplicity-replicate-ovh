@@ -60,6 +60,7 @@ class BackupSet:
         self.end_time = None  # will be set if inc
         self.partial = False  # true if a partial backup
         self.encrypted = False  # true if an encrypted backup
+        self.files_changed = []
         self.action = action
 
     def is_complete(self):
@@ -124,6 +125,10 @@ class BackupSet:
         self.encrypted = bool(pr.encrypted)
         self.info_set = True
 
+    def set_files_changed(self):
+        mf = self.get_manifest()
+        self.files_changed = mf.get_files_changed()
+
     def set_manifest(self, remote_filename):
         """
         Add local and remote manifest filenames to backup set
@@ -144,6 +149,8 @@ class BackupSet:
                     pr.end_time == self.end_time):
                 self.local_manifest_path = \
                     globals.archive_dir.append(local_filename)
+
+                self.set_files_changed()
                 break
 
     def delete(self):
@@ -275,6 +282,9 @@ class BackupSet:
         if self.end_time:
             return self.end_time
         assert 0, "Neither self.time nor self.end_time set"
+
+    def get_files_changed(self):
+        return self.files_changed
 
     def __len__(self):
         """
