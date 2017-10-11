@@ -20,6 +20,9 @@ New in v0.7.15 (2017/09/??)
 * Fixed bug #1714663 "Volume signed by XXXXXXXXXXXXXXXX, not XXXXXXXX"
   - Normalized comparison length to min length of compared keys before comparison
   - Avoids comparing mix of short, long, or fingerprint size keys.
+* Removed ability to get single file status from collection-status
+  - Was eating too much memory on large changsets causing memory issues
+  - Will need to be reimplemented in a memory friendly method
 
 
 New in v0.7.14 (2017/08/31)

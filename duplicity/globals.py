@@ -296,8 +296,5 @@ par2_options = ""
 # Whether to enable gio backend
 use_gio = False
 
-# If set, collect only the file status, not the whole root.
-file_changed = None
-
 # delay (in seconds) before next operation after failure
 backend_retry_delay = 30
