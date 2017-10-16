@@ -30,6 +30,7 @@ from duplicity.errors import BackendException, FatalBackendException
 from duplicity import log
 from duplicity import progress
 
+
 class B2ProgressListener:
     def set_total_bytes(self, total_byte_count):
         self.total_byte_count = total_byte_count
@@ -39,6 +40,7 @@ class B2ProgressListener:
 
     def close(self):
         pass
+
 
 class B2Backend(duplicity.backend.Backend):
     """
@@ -79,7 +81,8 @@ class B2Backend(duplicity.backend.Backend):
         self.path = "".join([url_part + "/" for url_part in self.url_parts])
         self.service.authorize_account('production', account_id, account_key)
 
-        log.Log("B2 Backend (path= %s, bucket= %s, minimum_part_size= %s)" % (self.path, bucket_name, self.service.account_info.get_minimum_part_size()), log.INFO)
+        log.Log("B2 Backend (path= %s, bucket= %s, minimum_part_size= %s)" %
+                (self.path, bucket_name, self.service.account_info.get_minimum_part_size()), log.INFO)
         try:
             self.bucket = self.service.get_bucket_by_name(bucket_name)
             log.Log("Bucket found", log.INFO)
@@ -95,20 +98,24 @@ class B2Backend(duplicity.backend.Backend):
         Download remote_filename to local_path
         """
         log.Log("Get: %s -> %s" % (self.path + remote_filename, local_path.name), log.INFO)
-        self.bucket.download_file_by_name(self.path + remote_filename, b2.download_dest.DownloadDestLocalFile(local_path.name))
+        self.bucket.download_file_by_name(self.path + remote_filename,
+                                          b2.download_dest.DownloadDestLocalFile(local_path.name))
 
     def _put(self, source_path, remote_filename):
         """
         Copy source_path to remote_filename
         """
         log.Log("Put: %s -> %s" % (source_path.name, self.path + remote_filename), log.INFO)
-        self.bucket.upload_local_file(source_path.name, self.path + remote_filename, content_type='application/pgp-encrypted', progress_listener=B2ProgressListener())
+        self.bucket.upload_local_file(source_path.name, self.path + remote_filename,
+                                      content_type='application/pgp-encrypted',
+                                      progress_listener=B2ProgressListener())
 
     def _list(self):
         """
         List files on remote server
         """
-        return [file_version_info.file_name[len(self.path):]  for (file_version_info, folder_name) in self.bucket.ls(self.path)]
+        return [file_version_info.file_name[len(self.path):]
+                for (file_version_info, folder_name) in self.bucket.ls(self.path)]
 
     def _delete(self, filename):
         """
@@ -124,7 +131,8 @@ class B2Backend(duplicity.backend.Backend):
         """
         log.Log("Query: %s" % self.path + filename, log.INFO)
         file_version_info = self.file_info(self.path + filename)
-        return {'size': file_version_info.size if file_version_info != None and file_version_info.size != None else -1 }
+        return {'size': file_version_info.size
+                if file_version_info is not None and file_version_info.size is not None else -1}
 
     def file_info(self, filename):
         response = self.bucket.list_file_names(filename, 1)
