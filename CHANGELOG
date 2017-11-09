@@ -34,6 +34,8 @@ New in v0.7.15 (2017/11/??)
   - This will keep memory usage lower in non collection-status operations
 * Fixed bug #1723890 with patch from Killian Lackhove
   - Fixes error handling in pydrivebackend.py
+* Fixed bug #1730902 GPG Error Handling
+  - use util.ufn() not str() to handle encoding
 
 
 New in v0.7.14 (2017/08/31)
