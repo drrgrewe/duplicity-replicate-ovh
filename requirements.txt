@@ -1,0 +1,13 @@
+boto
+coverage
+dropbox
+fasteners
+paramiko
+pep8
+pexpect
+pydrive
+pylint
+pyrax
+python-cloudfiles
+tox
+urllib3
