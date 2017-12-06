@@ -1,6 +1,6 @@
 boto
 coverage
-dropbox
+dropbox==6.9.0
 fasteners
 paramiko
 pep8
