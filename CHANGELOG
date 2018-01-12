@@ -1,4 +1,4 @@
-New in v0.7.16 (2017/12/xx)
+New in v0.7.16 (2018/01/12)
 ---------------------------
 * Fixed bug #1733057 AttributeError: 'GPGError' object has no attribute 'decode'
   - Replaced call to util.ufn() with call to util.uexc().  Stupid typo!
@@ -11,6 +11,7 @@ New in v0.7.16 (2017/12/xx)
   - Fixed bug #1639664 "Dropbox support needs to be updated for Dropbox SDK v7.1"
 * Patched in lp:~crosser/duplicity/fix-small-file-upload
   - Fixed small file upload changes made in Dropbox SDK v7.1
+* Fix pylint error in webdavbackend.py
 
 
 New in v0.7.15 (2017/11/13)

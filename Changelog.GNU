@@ -1,3 +1,8 @@
+2018-01-12  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fix pylint error in webdavbackend.py
+    * Prep for 0.7.16
+
 2017-11-28  Kenneth Loafman  <kenneth@loafman.com>
 
     * Patched in lp:~crosser/duplicity/fix-small-file-upload
