@@ -84,11 +84,6 @@ class ManifestTest(UnitTestCase):
 
     def setUp(self):
         UnitTestCase.setUp(self)
-        self.old_files_changed = globals.file_changed
-        globals.file_changed = 'testing'
-
-    def tearDown(self):
-        globals.file_changed = self.old_files_changed
 
     def test_basic(self):
         vi1 = manifest.VolumeInfo()
@@ -103,7 +98,6 @@ class ManifestTest(UnitTestCase):
 
         self.set_global('local_path', path.Path("Foobar"))
         m.set_dirinfo()
-        m.set_files_changed_info([])
 
         s = m.to_string()
         assert s.lower().startswith("hostname")
@@ -111,33 +105,6 @@ class ManifestTest(UnitTestCase):
 
         m2 = manifest.Manifest().from_string(s)
         assert m == m2
-
-    def test_corrupt_filelist(self):
-        vi1 = manifest.VolumeInfo()
-        vi1.set_info(3, ("hello",), None, (), None)
-        vi2 = manifest.VolumeInfo()
-        vi2.set_info(4, ("goodbye", "there"), None, ("aoeusht",), None)
-        vi3 = manifest.VolumeInfo()
-        vi3.set_info(34, (), None, (), None)
-        m = manifest.Manifest()
-        for vi in [vi1, vi2, vi3]:
-            m.add_volume_info(vi)
-
-        self.set_global('local_path', path.Path("Foobar"))
-        m.set_dirinfo()
-        m.set_files_changed_info([
-            ('one', 'new'),
-            ('two', 'changed'),
-            ('three', 'new'),
-            ])
-
-        # build manifest string
-        s = m.to_string()
-
-        # make filecount higher than files in list
-        s2 = re.sub('Filelist 3', 'Filelist 5', s)
-        m2 = manifest.Manifest().from_string(s2)
-        assert hasattr(m2, 'corrupt_filelist')
 
 if __name__ == "__main__":
     unittest.main()

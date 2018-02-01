@@ -1,3 +1,11 @@
+2018-02-01  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Removed changes made in bug #1044715 Provide a file history feature
+      - Changes required too much memory to carry in the manifest
+      - The option --file-changed in collection-status is now invalid
+      - This will close bugs: #1730451, #896728, #1526557, #1550176
+      - Starting a full backup will be needed to fully utilize this fix
+
 2018-01-12  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fix pylint error in webdavbackend.py

@@ -60,7 +60,6 @@ class BackupSet:
         self.end_time = None  # will be set if inc
         self.partial = False  # true if a partial backup
         self.encrypted = False  # true if an encrypted backup
-        self.files_changed = []
         self.action = action
 
     def is_complete(self):
@@ -125,10 +124,6 @@ class BackupSet:
         self.encrypted = bool(pr.encrypted)
         self.info_set = True
 
-    def set_files_changed(self):
-        mf = self.get_manifest()
-        self.files_changed = mf.get_files_changed()
-
     def set_manifest(self, remote_filename):
         """
         Add local and remote manifest filenames to backup set
@@ -149,8 +144,6 @@ class BackupSet:
                     pr.end_time == self.end_time):
                 self.local_manifest_path = \
                     globals.archive_dir.append(local_filename)
-
-                self.set_files_changed()
                 break
 
     def delete(self):
@@ -284,9 +277,6 @@ class BackupSet:
         if self.end_time:
             return self.end_time
         assert 0, "Neither self.time nor self.end_time set"
-
-    def get_files_changed(self):
-        return self.files_changed
 
     def __len__(self):
         """
@@ -1181,53 +1171,3 @@ class CollectionsStatus:
             old_sets = filter(lambda s: s.get_time() < t, chain.get_all_sets())
             result_sets.extend(old_sets)
         return self.sort_sets(result_sets)
-
-    def get_file_changed_record(self, filepath):
-        """
-        Returns time line of specified file changed
-        """
-        # quick fix to spaces in filepath
-        modified_filepath = filepath
-        if " " in filepath:
-            modified_filepath = '"' + filepath.replace(" ", r"\x20") + '"'
-
-        if not self.matched_chain_pair:
-            return ""
-
-        all_backup_set = self.matched_chain_pair[1].get_all_sets()
-        specified_file_backup_set = []
-        specified_file_backup_type = []
-
-        for bs in all_backup_set:
-            filelist = [fileinfo[1] for fileinfo in bs.get_files_changed()]
-            if modified_filepath in filelist:
-                specified_file_backup_set.append(bs)
-                index = filelist.index(modified_filepath)
-                specified_file_backup_type.append(bs.get_files_changed()[index][0])
-
-        return FileChangedStatus(filepath, list(zip(specified_file_backup_type, specified_file_backup_set)))
-
-
-class FileChangedStatus:
-    def __init__(self, filepath, fileinfo_list):
-        self.filepath = filepath
-        self.fileinfo_list = fileinfo_list
-
-    def __unicode__(self):
-        set_schema = "%20s   %30s  %20s"
-        l = ["-------------------------",
-             _("File: %s") % (self.filepath),
-             _("Total number of backup: %d") % len(self.fileinfo_list),
-             set_schema % (_("Type of backup set:"), _("Time:"), _("Type of file change:"))]
-
-        for s in self.fileinfo_list:
-            backup_type = s[0]
-            backup_set = s[1]
-            if backup_set.time:
-                type = _("Full")
-            else:
-                type = _("Incremental")
-            l.append(set_schema % (type, dup_time.timetopretty(backup_set.get_time()), backup_type.title()))
-
-        l.append("-------------------------")
-        return "\n".join(l)
