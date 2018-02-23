@@ -1,4 +1,4 @@
-New in v0.7.17 (2018/02/01)
+New in v0.7.17 (2018/02/??)
 ---------------------------
 * Removed changes made in bug #1044715 Provide a file history feature
   - Changes required too much memory to carry in the manifest
