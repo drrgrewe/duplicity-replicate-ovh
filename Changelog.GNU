@@ -1,3 +1,9 @@
+2018-02-26  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fix update of Launchpad Translations.  Translations were not being picked
+      up on a daily basis and we got several months behind.
+    * Prep for 0.7.17
+
 2018-02-01  Kenneth Loafman  <kenneth@loafman.com>
 
     * Removed changes made in bug #1044715 Provide a file history feature

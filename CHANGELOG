@@ -1,10 +1,12 @@
-New in v0.7.17 (2018/02/??)
+New in v0.7.17 (2018/02/26)
 ---------------------------
 * Removed changes made in bug #1044715 Provide a file history feature
   - Changes required too much memory to carry in the manifest
   - The option --file-changed in collection-status is now invalid
   - This will close bugs: #1730451, #896728, #1526557, #1550176
   - Starting a full backup will be needed to fully utilize this fix
+* Fix update of Launchpad Translations.  Translations were not being picked
+  up on a daily basis and we got several months behind.
 
 
 New in v0.7.16 (2018/01/12)
