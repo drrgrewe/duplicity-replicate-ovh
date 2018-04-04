@@ -1,3 +1,14 @@
+2018-04-04  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Partial fix of bug #1734144 with patch from Joris van Eijden
+      - Note: this is really just a partial fix for now, since it only covers
+        the case where the local size does not yet match the remote size.  A
+        case where -1 is the returned length is not fixed.
+
+2018-03-17  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #1756550 Online html man page is showing a 0 byte file
+
 2018-02-26  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fix update of Launchpad Translations.  Translations were not being picked
