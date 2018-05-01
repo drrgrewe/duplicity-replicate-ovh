@@ -3,6 +3,8 @@
     * More fixes for bug #1734144
       - Number of retries is now same as globals.num_retries.
       - Added standoff delay of 0.5 sec per attempt.
+    * Fixed bug #1764432 with patch from Robke Geenen
+      - Just join the parts together.
 
 2018-04-04  Kenneth Loafman  <kenneth@loafman.com>
 

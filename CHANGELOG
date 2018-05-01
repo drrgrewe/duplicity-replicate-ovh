@@ -7,6 +7,8 @@ New in v0.7.18 (2018/0?/??)
     case where -1 is the returned length is not fixed.
   - Number of retries is now same as globals.num_retries.
   - Added standoff delay of 0.5 sec per attempt.
+* Fixed bug #1764432 with patch from Robke Geenen
+  - Just join the parts together.
 
 
 New in v0.7.17 (2018/02/26)
