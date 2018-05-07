@@ -1,3 +1,8 @@
+2018-05-07  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #x1717935 with suggestion from strainu
+      - Use urllib.quote_plus() to properly quote pathnames passed via URL
+
 2018-05-01  Kenneth Loafman  <kenneth@loafman.com>
 
     * More fixes for bug #1734144
