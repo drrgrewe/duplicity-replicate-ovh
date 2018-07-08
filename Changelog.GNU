@@ -1,6 +1,12 @@
+2018-07-08  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #1780617 Test fail when GnuPG >= 2.2.8
+      - Relevant change in GnuPG 2.2.8: https://dev.gnupg.org/T3981
+      - Added '--ignore-mdc-error' to all gpg calls made.
+
 2018-05-07  Kenneth Loafman  <kenneth@loafman.com>
 
-    * Fixed bug #x1717935 with suggestion from strainu
+    * Fixed bug #1717935 with suggestion from strainu
       - Use urllib.quote_plus() to properly quote pathnames passed via URL
 
 2018-05-01  Kenneth Loafman  <kenneth@loafman.com>

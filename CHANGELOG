@@ -9,8 +9,11 @@ New in v0.7.18 (2018/0?/??)
   - Added standoff delay of 0.5 sec per attempt.
 * Fixed bug #1764432 with patch from Robke Geenen
   - Just join the parts together.
-* Fixed bug #x1717935 with suggestion from strainu
+* Fixed bug #1717935 with suggestion from strainu
   - Use urllib.quote_plus() to properly quote pathnames passed via URL
+* Fixed bug #1780617 Test fail when GnuPG >= 2.2.8
+  - Relevant change in GnuPG 2.2.8: https://dev.gnupg.org/T3981
+  - Added '--ignore-mdc-error' to all gpg calls made.
 
 
 New in v0.7.17 (2018/02/26)
