@@ -32,15 +32,24 @@ from duplicity import log
 from duplicity import progress
 
 
-class B2ProgressListener:
-    def set_total_bytes(self, total_byte_count):
-        self.total_byte_count = total_byte_count
+def progress_listener_factory():
+    u"""
+    Returns progress instance suitable for passing to b2.api.B2Api
+    methods.
+    """
+    class B2ProgressListener(b2.progress.AbstractProgressListener):
+        def __init__(self):
+            super(B2ProgressListener, self).__init__()
 
-    def bytes_completed(self, byte_count):
-        progress.report_transfer(byte_count, self.total_byte_count)
+        def set_total_bytes(self, total_byte_count):
+            self.total_byte_count = total_byte_count
 
-    def close(self):
-        pass
+        def bytes_completed(self, byte_count):
+            progress.report_transfer(byte_count, self.total_byte_count)
+
+        def close(self):
+            super(B2ProgressListener, self).close()
+    return B2ProgressListener()
 
 
 class B2Backend(duplicity.backend.Backend):
@@ -62,6 +71,7 @@ class B2Backend(duplicity.backend.Backend):
             import b2.account_info
             import b2.download_dest
             import b2.file_version
+            import b2.progress
         except ImportError:
             raise BackendException('B2 backend requires B2 Python APIs (pip install b2)')
 
@@ -109,7 +119,7 @@ class B2Backend(duplicity.backend.Backend):
         log.Log("Put: %s -> %s" % (source_path.name, self.path + remote_filename), log.INFO)
         self.bucket.upload_local_file(source_path.name, quote_plus(self.path + remote_filename),
                                       content_type='application/pgp-encrypted',
-                                      progress_listener=B2ProgressListener())
+                                      progress_listener=progress_listener_factory())
 
     def _list(self):
         """

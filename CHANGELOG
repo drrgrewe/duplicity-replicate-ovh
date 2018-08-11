@@ -14,6 +14,8 @@ New in v0.7.18 (2018/0?/??)
 * Fixed bug #1780617 Test fail when GnuPG >= 2.2.8
   - Relevant change in GnuPG 2.2.8: https://dev.gnupg.org/T3981
   - Added '--ignore-mdc-error' to all gpg calls made.
+* Fixed bug #1785520 with patch from Chris Hunt
+  - Fix for B2 version 1.3.4 just released
 
 
 New in v0.7.17 (2018/02/26)

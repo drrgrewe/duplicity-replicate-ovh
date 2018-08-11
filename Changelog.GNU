@@ -1,3 +1,8 @@
+2018-08-11  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #1785520 with patch from Chris Hunt
+      - Fix for B2 version 1.3.4 just released
+
 2018-07-08  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fixed bug #1780617 Test fail when GnuPG >= 2.2.8
