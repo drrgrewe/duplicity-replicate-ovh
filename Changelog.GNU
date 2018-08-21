@@ -1,6 +1,8 @@
 2018-08-21  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fix a 2to3 error in ssh_paramiko_backend.py
+    * Merged in lp:~duplicity-team/duplicity/po-updates
+    * Prep for 0.7.18
 
 2018-08-11  Kenneth Loafman  <kenneth@loafman.com>
 
