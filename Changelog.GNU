@@ -1,3 +1,7 @@
+2018-08-21  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fix a 2to3 error in ssh_paramiko_backend.py
+
 2018-08-11  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fixed bug #1785520 with patch from Chris Hunt
