@@ -65,15 +65,6 @@ from duplicity import progress
 
 
 if '--pydevd' in sys.argv or os.getenv('PYDEVD', None):
-    # The following is for starting remote debugging in Eclipse with Pydev.
-    # Adjust the path to your location and version of Eclipse and Pydev.
-    if platform.platform().startswith('Linux'):
-        pysrc = "/opt/liclipse/plugins/org.python.pydev_5.7.0.201704111135/pysrc"
-    elif platform.platform().startswith('Darwin'):
-        pysrc = "/Applications/LiClipse.app/Contents/liclipse/plugins/org.python.pydev_5.7.0.201704111135/pysrc"
-    else:
-        raise Exception("Platform %s not supported by pydevd." % platform.platform())
-    sys.path.append(pysrc)
     import pydevd  # @UnresolvedImport
     pydevd.settrace()
     # In a dev environment the path is screwed so fix it.
@@ -333,8 +324,10 @@ def write_multivol(backup_type, tarblock_iter, man_outfp, sig_outfp, backend):
             size = info['size']
             if size == orig_size:
                 break
-            log.Notice(_("Remote filesize %d for %s does not match local size %d, retrying.") % (size,
-                       util.escape(dest_filename), orig_size))
+            log.Notice(_("Remote filesize %d for %s does not match local size %d, retrying.") %
+                       (0 if size is None else size,
+                        util.escape(dest_filename),
+                        orig_size))
             time.sleep(1 + (attempt * 0.5))
         if size is None:
             return  # error querying file
