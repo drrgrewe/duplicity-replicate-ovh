@@ -1,5 +1,12 @@
 2018-08-21  Kenneth Loafman  <kenneth@loafman.com>
 
+    * Fixed bug #1788558
+      - Treat None as zero when printing log.
+    * Revert fix for bug #1788599.
+      - Was causing problems with directory names
+
+2018-08-21  Kenneth Loafman  <kenneth@loafman.com>
+
     * Fix a 2to3 error in ssh_paramiko_backend.py
     * Merged in lp:~duplicity-team/duplicity/po-updates
     * Prep for 0.7.18
