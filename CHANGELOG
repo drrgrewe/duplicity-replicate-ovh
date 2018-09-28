@@ -1,5 +1,11 @@
 New in v0.7.19 (2018/??/??)
 ---------------------------
+* Fixed bug #1788558 again
+  - If we get None for size skip check.
+
+
+New in v0.7.18.1 (2018/08/27)
+-----------------------------
 * Fixed bug #1788558
   - Treat None as zero when printing log.
 * Revert fix for bug #1788599.

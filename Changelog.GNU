@@ -1,4 +1,13 @@
-2018-08-21  Kenneth Loafman  <kenneth@loafman.com>
+2018-08-27  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Fixed bug #1788558 again
+      - If we get None for size skip check.
+
+2018-08-27  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Prep for 0.7.18.1
+
+2018-08-26  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fixed bug #1788558
       - Treat None as zero when printing log.
