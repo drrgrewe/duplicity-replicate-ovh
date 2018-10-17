@@ -1,3 +1,7 @@
+2018-10-17  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Prep for 0.7.18.2
+
 2018-08-27  Kenneth Loafman  <kenneth@loafman.com>
 
     * Fixed bug #1788558 again
