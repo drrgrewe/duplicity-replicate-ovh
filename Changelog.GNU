@@ -1,5 +1,11 @@
 2018-10-17  Kenneth Loafman  <kenneth@loafman.com>
 
+    * Fixed bug #1798206 and bug #1798504
+      * Made paramiko a global with import during __init__ so it would
+        not be loaded unless needed.
+
+2018-10-17  Kenneth Loafman  <kenneth@loafman.com>
+
     * Prep for 0.7.18.2
 
 2018-08-27  Kenneth Loafman  <kenneth@loafman.com>

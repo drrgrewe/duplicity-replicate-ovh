@@ -37,6 +37,9 @@ from duplicity import globals
 from duplicity import log
 from duplicity.errors import BackendException
 
+global paramiko
+
+
 read_blocksize = 65635  # for doing scp retrievals, where we need to read ourselves
 
 
