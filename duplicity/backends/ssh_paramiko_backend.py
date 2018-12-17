@@ -64,6 +64,8 @@ class SSHParamikoBackend(duplicity.backend.Backend):
     This problem does not exist with sftp.
     """
     def __init__(self, parsed_url):
+        global paramiko
+
         duplicity.backend.Backend.__init__(self, parsed_url)
 
         self.retry_delay = 10
