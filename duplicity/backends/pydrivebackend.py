@@ -92,6 +92,7 @@ Exception: %s""" % str(e))
             file_in_root = self.drive.CreateFile({'title': 'i_am_in_root'})
             file_in_root.Upload()
             parent_folder_id = file_in_root['parents'][0]['id']
+            file_in_root.Delete()
 
         # Fetch destination folder entry and create hierarchy if required.
         folder_names = string.split(parsed_url.path, '/')
