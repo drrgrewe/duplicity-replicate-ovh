@@ -882,6 +882,14 @@ See also
 .BR "A NOTE ON SSL CERTIFICATE VERIFICATION" .
 
 .TP
+.BI "--metadata-sync-mode " mode
+This option defaults to 'full', but you can set it to 'partial'
+to avoid syncing metadata for backup chains that you are not going to use.
+This saves time when restoring for the first time, and lets you restore an
+old backup that was encrypted with a different passphrase by supplying only
+the target passphrase.
+
+.TP
 .BI "--tempdir " directory
 Use this existing directory for duplicity temporary files instead of
 the system default, which is usually the /tmp directory. This option
