@@ -6,6 +6,7 @@ description: |
 
 grade: stable
 confinement: classic
+base: core18
 
 apps:
   duplicity:
@@ -17,6 +18,13 @@ parts:
     python-version: python2
     stage-packages:
     - librsync-dev
-    python-packages: [boto, dropbox==6.9.0, fasteners, future, paramiko, pydrive, pyrax, python-cloudfiles, requests, urllib3]
+    - python-boto
+    - python-fasteners
+    - python-future
+    - python-paramiko
+    - python-cloudfiles
+    - python-requests
+    - python-urllib3
+    python-packages: [dropbox==6.9.0, pydrive, pyrax]
     source: .
 
