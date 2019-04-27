@@ -1020,7 +1020,7 @@ def remove_old(col_stats):
                    _("Rerun command with --force option to actually delete."))
 
 
-def sync_archive():
+def sync_archive(col_stats):
     """
     Synchronize local archive manifest file and sig chains to remote archives.
     Copy missing files from remote to local as needed to make sure the local
@@ -1030,6 +1030,27 @@ def sync_archive():
     @return: void
     """
     suffixes = [".g", ".gpg", ".z", ".gz", ".part"]
+
+    def is_needed(filename):
+        """Indicates if the metadata file should be synced.
+
+        In full sync mode, or if there's a collection misbehavior, all files
+        are needed.
+
+        Otherwise, only the metadata for the target chain needs sync.
+        """
+        if globals.metadata_sync_mode == "full":
+            return True
+        assert globals.metadata_sync_mode == "partial"
+        parsed = file_naming.parse(filename)
+        try:
+            target_chain = col_stats.get_backup_chain_at_time(
+                globals.restore_time or dup_time.curtime)
+        except collections.CollectionsError:
+            # With zero or multiple chains at this time, do a full sync
+            return True
+        return parsed.end_time >= target_chain.start_time and \
+            parsed.start_time <= target_chain.end_time
 
     def get_metafiles(filelist):
         """
@@ -1180,7 +1201,7 @@ def sync_archive():
         # already have a local partial.  The local partial will already be
         # complete in this case (seems we got interrupted before we could move
         # it to its final location).
-        if key not in local_keys and key not in local_partials:
+        if key not in local_keys and key not in local_partials and is_needed(key):
             local_missing.append(remote_metafiles[key])
 
     for key in local_keys:
@@ -1414,14 +1435,14 @@ def do_backup(action):
     # check for disk space and available file handles
     check_resources(action)
 
-    # check archive synch with remote, fix if needed
-    if action not in ["collection-status"]:
-        sync_archive()
-
     # get current collection status
     col_stats = collections.CollectionsStatus(globals.backend,
                                               globals.archive_dir,
                                               action).set_values()
+
+    # check archive synch with remote, fix if needed
+    if action not in ["collection-status"]:
+        sync_archive(col_stats)
 
     while True:
         # if we have to clean up the last partial, then col_stats are invalidated
@@ -1488,7 +1509,7 @@ def do_backup(action):
     elif action == "remove-all-but-n-full" or action == "remove-all-inc-of-but-n-full":
         remove_all_but_n_full(col_stats)
     elif action == "sync":
-        sync_archive()
+        sync_archive(col_stats)
     else:
         assert action == "inc" or action == "full", action
         # the passphrase for full and inc is used by --sign-key

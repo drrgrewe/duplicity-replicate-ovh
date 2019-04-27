@@ -8,6 +8,14 @@ New in v0.7.19 (2019/??/??)
     It's a little surprising for the user if they wind up with this file called
     "i_am_in_root" that they don't know where it came from. Almost sounds like
     they were hacked.
+* Merged in lp:~yajo/duplicity/duplicity
+  - Support partial metadata sync.
+  - Fixes bug #1823858 by letting the user to choose partial syncing. Only the metadata for the target chain
+    will be downloaded. If older (or newer) chains are encrypted with a different passphrase, the user will
+    be able to restore to a given time by supplying only the passphrase for the chain selected by
+    the `--restore-time` option when using this new option.
+  - A side effect is that using this flag reduces dramatically the sync time when moving files from one to
+    another location, in cases where big amounts of chains are found.
 
 
 New in v0.7.18.2 (2018/10/17)

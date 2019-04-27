@@ -225,6 +225,9 @@ imap_full_address = False
 # Can be changed with a command line argument.
 imap_mailbox = "INBOX"
 
+# Sync all metadata by default
+metadata_sync_mode = "full"
+
 # Whether the old filename format is in effect.
 old_filenames = False
 
