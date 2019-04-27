@@ -1,3 +1,14 @@
+2019-04-27  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Merged in lp:~yajo/duplicity/duplicity
+      - Support partial metadata sync.
+      - Fixes bug #1823858 by letting the user to choose partial syncing. Only the metadata for the target chain
+        will be downloaded. If older (or newer) chains are encrypted with a different passphrase, the user will
+        be able to restore to a given time by supplying only the passphrase for the chain selected by
+        the `--restore-time` option when using this new option.
+      - A side effect is that using this flag reduces dramatically the sync time when moving files from one to
+        another location, in cases where big amounts of chains are found.
+
 2019-02-25  Kenneth Loafman  <kenneth@loafman.com>
 
     * Merged in lp:~mterry/duplicity/pydrive-root-0.7
