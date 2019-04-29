@@ -1,4 +1,4 @@
-New in v0.7.19 (2019/??/??)
+New in v0.7.19 (2019/04/29)
 -----------------------------
 * Fixed bug #1798206 and bug #1798504
   - Made paramiko a global with import during __init__ so it would
@@ -16,6 +16,7 @@ New in v0.7.19 (2019/??/??)
     the `--restore-time` option when using this new option.
   - A side effect is that using this flag reduces dramatically the sync time when moving files from one to
     another location, in cases where big amounts of chains are found.
+* Prep for release.
 
 
 New in v0.7.18.2 (2018/10/17)
