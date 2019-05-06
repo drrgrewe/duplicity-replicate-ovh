@@ -17,14 +17,33 @@ parts:
     plugin: python
     python-version: python2
     stage-packages:
+    - lftp		# for lftpbackend.py
     - librsync-dev
-    - python-boto
+    - megatools		# for megabackend.py
+    - ncftp		# for ncftpbackend.py
+    - python-azure	# for azurebackend.py
+    - python-boto	# for botobackend.py
+    - python-cloudfiles	# for cfbackend.py
     - python-fasteners
     - python-future
-    - python-paramiko
-    - python-cloudfiles
-    - python-requests
+    - python-gdata	# for gdocsbackend.py
+    - python-gi		# for giobackend.py
+    - python-googleapi	# for pydrivebackend.py
+    - python-httplib2	# for pydrivebackend.py
+    - python-paramiko	# for ssh_paramiko_backend.py
+    - python-requests	# for adbackend.py, onedrivebackend.py
+    - python-requests-oauthlib # as above
+    - python-swiftclient # for swiftbackend.py
     - python-urllib3
-    python-packages: [dropbox, pydrive, pyrax]
+    - rsync		# for rsyncbackend.py
+    - tahoe-lafs	# for tahoebackend.py
+    # -sx for sxbackend.py, but looks dead http://www.skylable.com/
+    python-packages: [b2, dropbox, mediafire, pydrive, pyrax]
+    # b2 for b2backend.py
+    # dropbox for dpbxbackend.py
+    # mediafire for mediafirebackend.py
+    # pydrive for pydrivebackend.py
+    # pyrax for hubicbackend, _cf_pyrax.py
+    # jottalib backend is not in 0.7-series
     source: .
 
