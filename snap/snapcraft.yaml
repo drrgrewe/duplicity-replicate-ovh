@@ -17,7 +17,9 @@ parts:
     plugin: python
     python-version: python2
     stage-packages:
+    - gnupg
     - lftp		# for lftpbackend.py
+    - librsync1
     - librsync-dev
     - megatools		# for megabackend.py
     - ncftp		# for ncftpbackend.py
@@ -30,6 +32,8 @@ parts:
     - python-gi		# for giobackend.py
     - python-googleapi	# for pydrivebackend.py
     - python-httplib2	# for pydrivebackend.py
+    - python-lockfile
+    - python-oauthlib
     - python-paramiko	# for ssh_paramiko_backend.py
     - python-requests	# for adbackend.py, onedrivebackend.py
     - python-requests-oauthlib # as above

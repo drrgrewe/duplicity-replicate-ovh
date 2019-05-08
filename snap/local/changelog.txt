@@ -2,4 +2,5 @@ Snap changelog
 Revision	Version		Change
 6		0.7.19		Added a large number of dependencies beyond those in
 				requirements.txt based on those imported or used in
-				backends.   
+				backends.  
+7		0.7.19		Added additional dependencies from .deb package.
