@@ -1,3 +1,8 @@
+2019-05-20  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Merged in lp:~mgorse/duplicity/0.7-series
+      - Fix bug 1828869: refresh CollectionsStatus after sync
+
 2019-04-27  Kenneth Loafman  <kenneth@loafman.com>
 
     * Merged in lp:~yajo/duplicity/duplicity
