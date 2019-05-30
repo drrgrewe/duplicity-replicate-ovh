@@ -23,6 +23,7 @@ parts:
     - librsync-dev
     - megatools		# for megabackend.py
     - ncftp		# for ncftpbackend.py
+    - openssh-client    # for ssh_pexpect_backend.py
     - python-azure	# for azurebackend.py
     - python-boto	# for botobackend.py
     - python-cloudfiles	# for cfbackend.py
