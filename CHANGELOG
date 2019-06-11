@@ -2,6 +2,8 @@ New in v0.7.20 (2019/??/??)
 -----------------------------
 * Merged in lp:~mgorse/duplicity/0.7-series
   - Fix bug 1828869: refresh CollectionsStatus after sync
+* Merged in lp:~aaron-whitehouse/duplicity/07-snap
+  - Add snapcraft packaging instructions for 0.7 series
 
 
 New in v0.7.19 (2019/04/29)

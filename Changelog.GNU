@@ -1,3 +1,8 @@
+2019-06-11  Kenneth Loafman  <kenneth@loafman.com>
+
+    * Merged in lp:~aaron-whitehouse/duplicity/07-snap
+      - Add snapcraft packaging instructions for 0.7 series
+
 2019-05-20  Kenneth Loafman  <kenneth@loafman.com>
 
     * Merged in lp:~mgorse/duplicity/0.7-series
