@@ -1,4 +1,6 @@
-New in v0.7.20 (2019/??/??)
+Changes made in trunk only since 0.8-series is now stable
+and this version only runs on Python 2 which is end-of-life
+as of 1/1/2020.  0.7.19 is the last of this series.
 -----------------------------
 * Merged in lp:~mgorse/duplicity/0.7-series
   - Fix bug 1828869: refresh CollectionsStatus after sync
