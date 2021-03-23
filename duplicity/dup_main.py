@@ -1089,6 +1089,10 @@ def replicate():
             mf_tdp = dup_temp.new_tempduppath(file_naming.parse(mf_filename))
             mf = manifest.Manifest(fh=mf_tdp.filtered_open(mode=u'wb'))
             for i, filename in list(src_set.volume_name_dict.items()):
+                tgt_filename = file_naming.get(src_set.type, i, encrypted=config.encryption, gzipped=config.compression)
+                if tgt_filename in tgt_list:
+                    log.Info(_(u"Volume %s already replicated") % ( filename, ))
+                    continue
                 log.Notice(_(u"Replicating %s.") % (filename,))
                 fileobj = restore_get_enc_fileobj(config.src_backend, filename, rmf.volume_info_dict[i])
                 filename = file_naming.get(src_set.type, i, encrypted=config.encryption, gzipped=config.compression)
